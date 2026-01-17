@@ -1,29 +1,21 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #f4f4f4;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6;
-}
-
 main {
-    width: 800px;
-    margin: 0, auto;
+    max-width: 800px; /* Gunakan max-width agar responsif di layar kecil */
+    margin: 0 auto;   /* Hilangkan tanda koma */
     padding: 20px;
 }
 
-h1 {
-    color: #333;
+/* Untuk mengatur jarak antar menu navigasi */
+nav ul {
+    display: flex;       /* Aktifkan Flexbox agar gap bekerja */
+    list-style: none;    /* Menghilangkan titik bullet pada list */
+    gap: 20px;           /* Jarak antar item menu */
 }
 
-nav ul li a {
+nav a {
     text-decoration: none;
-    gap: 40px;
+    color: #333;         /* Warna link default */
 }
-nav ul li a:hover {
-    color: #555;
+
+nav a:hover {
+    color: #007bff;      /* Warna saat kursor di atasnya (misal: biru) */
 }

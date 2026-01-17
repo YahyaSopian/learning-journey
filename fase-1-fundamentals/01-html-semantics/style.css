@@ -1,21 +1,45 @@
 main {
-    max-width: 800px; /* Gunakan max-width agar responsif di layar kecil */
-    margin: 0 auto;   /* Hilangkan tanda koma */
-    padding: 20px;
+  max-width: 800px; /* Gunakan max-width agar responsif di layar kecil */
+  margin: 0 auto; /* Hilangkan tanda koma */
+  padding: 20px;
+  display: flex;
+
+}
+
+article{
+    flex: 3;
+}
+
+aside {
+    flex: 1;
+    
 }
 
 /* Untuk mengatur jarak antar menu navigasi */
 nav ul {
-    display: flex;       /* Aktifkan Flexbox agar gap bekerja */
-    list-style: none;    /* Menghilangkan titik bullet pada list */
-    gap: 20px;           /* Jarak antar item menu */
+  display: flex; /* Aktifkan Flexbox agar gap bekerja */
+  list-style: none; /* Menghilangkan titik bullet pada list */
+  gap: 20px; /* Jarak antar item menu */
 }
 
 nav a {
-    text-decoration: none;
-    color: #333;         /* Warna link default */
+  text-decoration: none;
+  color: #333; /* Warna link default */
 }
 
 nav a:hover {
-    color: #007bff;      /* Warna saat kursor di atasnya (misal: biru) */
+  color: #007bff; /* Warna saat kursor di atasnya (misal: biru) */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+    align-items: center;
+}
+
+
+@media (max-width: 600px) {
+  main {
+    flex-direction: column; /* Di HP, kolom akan bertumpuk ke bawah */
+  }
 }

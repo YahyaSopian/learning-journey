@@ -1,7 +1,6 @@
-const isDeveloper = true;
 const tahunSekarang = 2026;
 
-function cekStatusUser(tahunLahirUser) {
+function cekStatusUser(nama, tahunLahirUser, isDev) {
   let hasilUmur = tahunSekarang - tahunLahirUser;
   let isAdult = hasilUmur >= 18;
 
@@ -16,15 +15,25 @@ function cekStatusUser(tahunLahirUser) {
     console.log("Status: Dewasa");
   }
 
-  if (isAdult && isDeveloper) {
-    console.log("💡 Pesan: Kamu dewasa yang hebat!");
+  if (isAdult && isDev) {
+    console.log(`Halo ${nama}, kamu dewasa yang hebat!`);
   }
 }
 
 // Data Array
-let daftarTahunLahir = [1990, 2005, 2012, 1985, 2004];
+// let daftarTahunLahir = [1990, 2005, 2012, 1985, 2004];
 
 // Otomatisasi dengan Loop
-for (let i = 0; i < daftarTahunLahir.length; i++) {
-  cekStatusUser(daftarTahunLahir[i]);
+// for (let i = 0; i < daftarTahunLahir.length; i++) {
+//   cekStatusUser(daftarTahunLahir[i]);
+// }
+
+const dataUser = [
+  { nama: "Yahya", tahunLahir: 1996, isDev: true },
+  { nama: "Budi", tahunLahir: 2010, isDev: false },
+  { nama: "Sari", tahunLahir: 2015, isDev: true },
+];
+
+for (let i = 0; i < dataUser.length; i++) {
+  cekStatusUser(dataUser[i].nama, dataUser[i].tahunLahir, dataUser[i].isDev);
 }

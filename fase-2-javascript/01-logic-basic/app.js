@@ -36,4 +36,8 @@ const dataUser = [
 
 for (let i = 0; i < dataUser.length; i++) {
   cekStatusUser(dataUser[i].nama, dataUser[i].tahunLahir, dataUser[i].isDev);
+  const listParent = document.getElementById("daftar-user");
+  const listItem = document.createElement("li");
+  listItem.innerText = `${dataUser[i].nama} - Lahir: ${dataUser[i].tahunLahir}`;
+  listParent.appendChild(listItem);
 }

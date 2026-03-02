@@ -42,3 +42,13 @@ for (let i = 0; i < dataUser.length; i++) {
   listItem.innerText = `${dataUser[i].nama} - Lahir: ${dataUser[i].tahunLahir}`;
   listParent.appendChild(listItem);
 }
+
+const tombol = document.getElementById("btn-tambah");
+tombol.addEventListener("click", () => {
+  const userBaru = { nama: "User Misterius", tahunLahir: 2000, isDev: false };
+  const itemBaru = document.createElement("li");
+  itemBaru.innerText = `${userBaru.nama} - Lahir: ${userBaru.tahunLahir}`;
+  document.getElementById("daftar-user").appendChild(itemBaru);
+
+  cekStatusUser(userBaru.nama, userBaru.tahunLahir, userBaru.isDev);
+});

@@ -36,19 +36,31 @@ const dataUser = [
 
 const listParent = document.getElementById("daftar-user");
 
-for (let i = 0; i < dataUser.length; i++) {
-  cekStatusUser(dataUser[i].nama, dataUser[i].tahunLahir, dataUser[i].isDev);
-  const listItem = document.createElement("li");
-  listItem.innerText = `${dataUser[i].nama} - Lahir: ${dataUser[i].tahunLahir}`;
-  listParent.appendChild(listItem);
+// Fungsi khusus untuk membuat dan menempelkan elemen ke layar
+function renderUser(userObj) {
+  const item = document.createElement("li");
+  item.innerText = `${userObj.nama} - Lahir: ${userObj.tahunLahir}`;
+
+  let usiaUser = tahunSekarang - userObj.tahunLahir;
+
+  // Tentukan class berdasarkan usia
+  if (usiaUser >= 18) item.classList.add("dewasa");
+  else if (usiaUser >= 13) item.classList.add("remaja");
+  else item.classList.add("anak");
+
+  listParent.appendChild(item);
 }
 
+// Sekarang Loop jadi jauh lebih bersih:
+dataUser.forEach((user) => {
+  renderUser(user);
+  cekStatusUser(user.nama, user.tahunLahir, user.isDev);
+});
+
+// Dan Event Listener juga jadi sangat ringkas:
 const tombol = document.getElementById("btn-tambah");
 tombol.addEventListener("click", () => {
   const userBaru = { nama: "User Misterius", tahunLahir: 2000, isDev: false };
-  const itemBaru = document.createElement("li");
-  itemBaru.innerText = `${userBaru.nama} - Lahir: ${userBaru.tahunLahir}`;
-  document.getElementById("daftar-user").appendChild(itemBaru);
-
+  renderUser(userBaru);
   cekStatusUser(userBaru.nama, userBaru.tahunLahir, userBaru.isDev);
 });

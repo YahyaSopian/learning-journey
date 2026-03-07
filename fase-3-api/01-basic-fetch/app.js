@@ -31,4 +31,47 @@ fetch(usersApi)
       .forEach((user) => {
         console.log(`[${user.id}] ${user.name} - Email: ${user.email}`);
       }),
-  );
+  )
+  .catch((error) => console.error("Wah, gagal mengambil data: ", error));
+
+// Latihan 1: Eksplorasi Endpoint & Data Filtering
+const todosApi = "https://jsonplaceholder.typicode.com/todos";
+fetch(todosApi)
+  .then((response) => {
+    return response.json();
+  })
+  //   hanya menampilkan todo yang belum selesai (completed: false)
+  .then((todos) => {
+    todos
+      .filter((todo) => {
+        return !todo.completed;
+      })
+      .forEach((todo) =>
+        console.log(`[${todo.id}] ${todo.title} - Status: Belum Selesai`),
+      );
+  })
+  .catch((error) => console.error("Wah, gagal mengambil data: ", error));
+
+// Latihan 2: Dinamisasi DOM dengan Data API
+// Tujuan: Menampilkan data asli dari internet ke layar browser secara rapi.
+const container = document.getElementById("container-user");
+
+fetch(usersApi)
+  .then((response) => {
+    return response.json();
+  })
+  .then((users) => {
+    const cardTemplate = users
+      .map((user) => {
+        return `
+                <div class="card">
+                    <h3>${user.name}</h3>
+                    <p>Email: ${user.email}</p>
+                    <a href="${user.website}" target="_blank">Website: ${user.company.name}</a>
+                </div>
+            `;
+      })
+      .join("");
+    container.innerHTML = cardTemplate;
+  })
+  .catch((error) => console.error("Wah, gagal mengambil data: ", error));
